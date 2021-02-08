@@ -1,12 +1,14 @@
 package fr.epsi.apiweb.service;
 
 import fr.epsi.apiweb.resources.dto.Game;
+import fr.epsi.apiweb.resources.dto.GameDTO;
 import fr.epsi.apiweb.resources.repositories.GamesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,26 +21,37 @@ public class GamesService {
     @Autowired
     private GamesRepository gamesRepository;
 
-    public void create(String name, boolean is_online, String description){
-        Game gameToCreate = new Game();
+    @Autowired
+    private DtoToEntity dtoToEntity;
 
-        gameToCreate.setName(name);
-        gameToCreate.setIs_online(is_online);
-        gameToCreate.setDescription(description);
+    public Game create(Game game){
+        Game result = null;
+        Game gameToCreate = new Game();
+        UUID uuid = UUID.randomUUID();
+
+        gameToCreate.setGame_id(uuid);
+        gameToCreate.setName(game.getName());
+        gameToCreate.setIs_online(game.isIs_online());
+        gameToCreate.setDescription(game.getDescription());
 
         try {
-            gamesRepository.save(gameToCreate);
+            result = gamesRepository.save(gameToCreate);
             LOGGER.info("Game {} created", gameToCreate.getName());
         } catch (Exception e) {
             LOGGER.error("An error occured while creating game {} : {}", gameToCreate.getName(), e.getMessage());
         }
 
+        return result;
+    }
+
+    public Game createFromDto(GameDTO dto){
+        return create(dtoToEntity.gameDtoToEntity(dto));
     }
 
     public Game get(UUID id){
         Game result = null;
 
-        Optional<Game> query = gamesRepository.findByGameId(id);
+        Optional<Game> query = gamesRepository.findById(id);
         if (query.isPresent()){
             result = query.get();
         } else {
@@ -46,6 +59,10 @@ public class GamesService {
         }
 
         return result;
+    }
+
+    public List<Game> getAll(){
+        return gamesRepository.findAll();
     }
 
 }

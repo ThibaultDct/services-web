@@ -1,29 +1,12 @@
 package fr.epsi.apiweb.resources.dto;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
+import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.UUID;
+public class GameDTO implements Serializable {
 
-@Entity
-public class Game {
-
-    @Id
-    @Generated(GenerationTime.ALWAYS)
-    private UUID game_id;
     private String name;
     private boolean is_online;
     private String description;
-
-    public UUID getGame_id() {
-        return game_id;
-    }
-
-    public void setGame_id(UUID game_id) {
-        this.game_id = game_id;
-    }
 
     public String getName() {
         return name;
