@@ -1,5 +1,6 @@
 package fr.epsi.apiweb;
 
+import org.apache.http.auth.AUTH;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,16 +16,19 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-resources/**",
             "/swagger-ui.html",
             "/v2/api-docs/",
-            "/webjars/**"
+            "/webjars/**",
+            "/games/*",
+            "/games"
     };
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("*").permitAll();
-//                .antMatchers(AUTH_WHITELIST).permitAll()
-//                .antMatchers(HttpMethod.POST, "/games").permitAll()
-//                .antMatchers(HttpMethod.GET, "/games/").permitAll()
-//                .antMatchers("/**/*").permitAll();
+        http.authorizeRequests()
+                .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers(HttpMethod.POST, AUTH_WHITELIST).permitAll()
+                .antMatchers(HttpMethod.GET, AUTH_WHITELIST).permitAll()
+                .antMatchers(HttpMethod.PUT, AUTH_WHITELIST).permitAll()
+                .antMatchers("/**/*").permitAll();
 
     }
 }
