@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface AvisRepository extends JpaRepository<Avis, UUID> {
-    Optional<Avis> findByAvisId(UUID id);
+    Optional<Avis> findById(UUID id);
 }
