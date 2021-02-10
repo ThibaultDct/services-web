@@ -1,6 +1,6 @@
 package fr.epsi.apiweb.services;
 
-import fr.epsi.apiweb.resources.dto.Game;
+import fr.epsi.apiweb.resources.entities.GameEntity;
 import fr.epsi.apiweb.resources.repositories.GamesRepository;
 import fr.epsi.apiweb.service.GamesService;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @PropertySource("h2-database.properties")
-public class GameServiceTest {
+public class GameEntityServiceTest {
 
     @Autowired
     private GamesRepository gamesRepository;
@@ -25,14 +25,14 @@ public class GameServiceTest {
 
     @Test
     public void testCreateNewGame(){
-        Game test = new Game();
+        GameEntity test = new GameEntity();
         test.setName("Minecraft");
         test.setDescription("Block game");
         test.setIs_online(true);
 
-        Game game = gamesService.create(test);
+        GameEntity gameEntity = gamesService.create(test);
 
-        assertThat(gamesRepository.findByName("Minecraft").get().getGame_id().equals(game.getGame_id()));
+        assertThat(gamesRepository.findByName("Minecraft").get().getGame_id().equals(gameEntity.getGame_id()));
     }
 
 }

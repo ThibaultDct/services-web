@@ -1,14 +1,16 @@
-package fr.epsi.apiweb.resources.dto;
+package fr.epsi.apiweb.resources.entities;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-public class Game {
+@Table(name = "game")
+public class GameEntity {
 
     @Id
     @Generated(GenerationTime.ALWAYS)

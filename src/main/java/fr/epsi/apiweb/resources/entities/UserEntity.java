@@ -1,4 +1,4 @@
-package fr.epsi.apiweb.resources.dto;
+package fr.epsi.apiweb.resources.entities;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,10 +7,12 @@ import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-public class User {
+@Table(name = "user", schema = "public")
+public class UserEntity {
 
     @Id
     @Generated(GenerationTime.ALWAYS)

@@ -1,6 +1,6 @@
 package fr.epsi.apiweb.resources.endpoints;
 
-import fr.epsi.apiweb.resources.dto.Game;
+import fr.epsi.apiweb.resources.entities.GameEntity;
 import fr.epsi.apiweb.resources.dto.GameDTO;
 import fr.epsi.apiweb.service.GamesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ public class GamesController {
     private GamesService gamesService;
 
     @GetMapping("/games/")
-    public List<Game> retrieveAllGames(){
+    public List<GameEntity> retrieveAllGames(){
         return gamesService.getAll();
     }
 
     @GetMapping("/games/{id}")
-    public Game retrieveGameFromId(@PathVariable String id){
+    public GameEntity retrieveGameFromId(@PathVariable String id){
         UUID uuid = UUID.fromString(id);
         return gamesService.get(uuid);
     }
