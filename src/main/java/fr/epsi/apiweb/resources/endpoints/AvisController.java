@@ -32,4 +32,28 @@ public class AvisController {
         avisService.createFromDto(avisDTO, uuid);
     }
 
+    @GetMapping("/avis/{id}/addLike")
+    public void addLikeToAvis(@PathVariable String id){
+        UUID avis_uuid = UUID.fromString(id);
+        avisService.addLikeToAvis(avis_uuid);
+    }
+
+    @GetMapping("/avis/{id}/addDislike")
+    public void addDislikeToAvis(@PathVariable String id){
+        UUID avis_uuid = UUID.fromString(id);
+        avisService.addDislikeToAvis(avis_uuid);
+    }
+
+    @GetMapping("/avis/{id}/removeLike")
+    public void removeLikeToAvis(@PathVariable String id){
+        UUID avis_uuid = UUID.fromString(id);
+        avisService.removeLikeToAvis(avis_uuid);
+    }
+
+    @GetMapping("/avis/{id}/removeDislike")
+    public void removeDislikeToAvis(@PathVariable String id){
+        UUID avis_uuid = UUID.fromString(id);
+        avisService.removeDislikeToAvis(avis_uuid);
+    }
+
 }

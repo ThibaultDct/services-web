@@ -75,4 +75,32 @@ public class AvisService {
         return avisRepository.findByGame(gamesService.get(game_id));
     }
 
+    public void addLikeToAvis(UUID avis_id){
+        AvisEntity avis = get(avis_id);
+        int likes = avis.getLike();
+        avis.setLike(++likes);
+        avisRepository.save(avis);
+    }
+
+    public void addDislikeToAvis(UUID avis_id){
+        AvisEntity avis = get(avis_id);
+        int dislikes = avis.getDislike();
+        avis.setDislike(++dislikes);
+        avisRepository.save(avis);
+    }
+
+    public void removeLikeToAvis(UUID avis_id){
+        AvisEntity avis = get(avis_id);
+        int likes = avis.getLike();
+        avis.setLike(--likes);
+        avisRepository.save(avis);
+    }
+
+    public void removeDislikeToAvis(UUID avis_id){
+        AvisEntity avis = get(avis_id);
+        int dislikes = avis.getDislike();
+        avis.setDislike(--dislikes);
+        avisRepository.save(avis);
+    }
+
 }
