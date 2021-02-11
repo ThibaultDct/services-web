@@ -13,5 +13,5 @@ import java.util.UUID;
 public interface AvisRepository extends JpaRepository<AvisEntity, UUID> {
     Optional<AvisEntity> findById(UUID id);
     List<AvisEntity> findAll();
-    List<AvisEntity> findByGame(UUID game_id);
+    List<AvisEntity> findByGame(GameEntity game);
 }

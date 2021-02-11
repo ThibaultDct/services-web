@@ -2,6 +2,7 @@ package fr.epsi.apiweb.service;
 
 import fr.epsi.apiweb.resources.dto.AvisDTO;
 import fr.epsi.apiweb.resources.entities.AvisEntity;
+import fr.epsi.apiweb.resources.entities.GameEntity;
 import fr.epsi.apiweb.resources.repositories.AvisRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,9 @@ public class AvisService {
 
     @Autowired
     private AvisRepository avisRepository;
+
+    @Autowired
+    private GamesService gamesService;
 
     @Autowired
     private ObjectConvertersService objectConvertersService;
@@ -68,7 +72,7 @@ public class AvisService {
     }
 
     public List<AvisEntity> getAvisByGame(UUID game_id){
-        return avisRepository.findByGame(game_id);
+        return avisRepository.findByGame(gamesService.get(game_id));
     }
 
 }
