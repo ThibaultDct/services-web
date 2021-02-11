@@ -1,5 +1,6 @@
 package fr.epsi.apiweb.resources.endpoints;
 
+import fr.epsi.apiweb.business.Game;
 import fr.epsi.apiweb.resources.entities.GameEntity;
 import fr.epsi.apiweb.resources.dto.GameDTO;
 import fr.epsi.apiweb.service.GamesService;
@@ -16,7 +17,7 @@ public class GamesController {
     private GamesService gamesService;
 
     @GetMapping("/games/")
-    public List<GameEntity> retrieveAllGames(){
+    public List<Game> retrieveAllGames(){
         return gamesService.getAll();
     }
 

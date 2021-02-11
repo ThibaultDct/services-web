@@ -1,13 +1,15 @@
 package fr.epsi.apiweb.business;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Game {
+public class Game implements Serializable {
 
     private UUID game_id;
     private String name;
     private boolean is_online;
     private String description;
+    private int score;
 
     public Game(UUID game_id, String name, boolean is_online, String description) {
         this.game_id = game_id;
@@ -53,5 +55,13 @@ public class Game {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

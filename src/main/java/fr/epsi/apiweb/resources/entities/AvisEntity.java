@@ -16,6 +16,7 @@ public class AvisEntity {
     private String comment;
     private int like_score;
     private int dislike_score;
+    private boolean is_positive;
     @OneToOne
     @JoinColumn(name = "game", foreignKey = @ForeignKey(name = "FK_avis_game"))
     private GameEntity game;
@@ -69,5 +70,13 @@ public class AvisEntity {
 
     public void setUser(UserEntity user) {
         this.profile = user;
+    }
+
+    public boolean isIs_positive() {
+        return is_positive;
+    }
+
+    public void setIs_positive(boolean is_positive) {
+        this.is_positive = is_positive;
     }
 }
