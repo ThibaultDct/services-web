@@ -39,6 +39,7 @@ public class AvisService {
         avisEntityToCreate.setDislike(avisEntity.getDislike());
         avisEntityToCreate.setGame(avisEntity.getGame());
         avisEntityToCreate.setUser(avisEntity.getUser());
+        avisEntityToCreate.setIs_positive(avisEntity.isIs_positive());
 
         try {
             result = avisRepository.save(avisEntityToCreate);
