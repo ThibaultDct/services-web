@@ -48,6 +48,7 @@ public class ObjectConvertersService {
         result.setDislike(dto.getDislike());
         result.setGame(gamesService.get(game_id));
         result.setUser(userService.get(dto.getUser_uuid()));
+        result.setIs_positive(dto.isIs_positive());
 
         return result;
     }
