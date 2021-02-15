@@ -37,4 +37,17 @@ public class UserService {
         return result;
     }
 
+    public UserEntity getFromPseudo(String pseudo){
+        UserEntity result = null;
+
+        Optional<UserEntity> query = userRepository.findByUsername(pseudo);
+        if (query.isPresent()){
+            result = query.get();
+        } else {
+            LOGGER.error("Unable to get user with username {}", pseudo);
+        }
+
+        return result;
+    }
+
 }

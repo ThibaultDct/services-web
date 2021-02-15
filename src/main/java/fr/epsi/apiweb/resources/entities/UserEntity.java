@@ -15,7 +15,7 @@ public class UserEntity {
     @Id
     private UUID user_id;
     private String username;
-    private String password;
+    private String mdp;
 
     public UserEntity() {
     }
@@ -36,11 +36,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMdp() {
+        return mdp;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 }
