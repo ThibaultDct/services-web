@@ -1,7 +1,5 @@
 package fr.epsi.apiweb.resources.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
@@ -11,14 +9,16 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "user_auth")
 public class UserEntity {
 
     @Id
-    @Generated(GenerationTime.ALWAYS)
     private UUID user_id;
     private String username;
-    private String mdp;
+    private String password;
+
+    public UserEntity() {
+    }
 
     public UUID getUser_id() {
         return user_id;
@@ -36,12 +36,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    public String getMdp() {
-        return mdp;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
 }
